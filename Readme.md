@@ -32,3 +32,11 @@ After provisioning the instance, navigate to the ansible directory and run:
 ```sh
 ansible-playbook -i inventory playbook.yml
 ```
+
+python application run:
+```sh
+pip install -r requirement.txt
+configure enviornment variables of mysql_db
+run the command using
+uvicorn main:app --reload
+```

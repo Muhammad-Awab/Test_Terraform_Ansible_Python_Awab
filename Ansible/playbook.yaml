@@ -1,0 +1,24 @@
+- name: Configure EC2 instance
+  hosts: web
+  become: yes
+  tasks:
+    - name: Update and upgrade apt packages
+      apt:
+        update_cache: yes
+        upgrade: dist
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Deploy HTML file
+      copy:
+        src: ./index.html
+        dest: /var/www/html/
+
+    - name: Ensure Nginx is running and enabled
+      service:
+        name: nginx
+        state: started
+        enabled: yes
